@@ -1,0 +1,17 @@
+# Node / Angular
+/Frontend/node_modules/
+/Frontend/dist/
+/Frontend/.angular/
+
+# Java / Spring Boot
+/Backend/target/
+/Backend/.gradle/
+/Backend/build/
+*.class
+*.jar
+
+# IDE / OS Settings
+.DS_Store
+.vscode/
+.idea/
+*.log
