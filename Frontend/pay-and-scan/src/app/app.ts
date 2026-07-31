@@ -100,7 +100,7 @@ export class App implements AfterViewInit, OnDestroy {
 
   private authenticateGoogleUser(email: string, name: string): void {
     const cleanEmail = email.trim().toLowerCase();
-    this.http.post<User>('${environment.apiUrl}/auth/google-register', {
+    this.http.post<User>(`${environment.apiUrl}/auth/google-register`, {
       name: name,
       email: cleanEmail
     }).subscribe({
@@ -120,7 +120,7 @@ export class App implements AfterViewInit, OnDestroy {
       return;
     }
     const cleanEmail = this.signInEmail.trim().toLowerCase();
-    this.http.post<User>('${environment.apiUrl}/auth/signin', { email: cleanEmail })
+    this.http.post<User>(`${environment.apiUrl}/auth/signin`, { email: cleanEmail })
       .subscribe({
         next: (user) => {
           this.currentUser = user;
@@ -137,7 +137,7 @@ export class App implements AfterViewInit, OnDestroy {
       return;
     }
     const cleanEmail = this.signUpEmail.trim().toLowerCase();
-    this.http.post('${environment.apiUrl}/auth/send/sign-up/otp', { email: cleanEmail })
+    this.http.post(`${environment.apiUrl}/auth/send/sign-up/otp`, { email: cleanEmail })
       .subscribe({
         next: () => {
           this.otpSent = true;
@@ -156,7 +156,7 @@ export class App implements AfterViewInit, OnDestroy {
     const cleanEmail = this.signUpEmail.trim().toLowerCase();
     const cleanOtp = this.signUpOtp.trim();
 
-    this.http.post<User>('${environment.apiUrl}/auth/signup', {
+    this.http.post<User>(`${environment.apiUrl}/auth/signup`, {
       name: this.signUpName.trim(),
       email: cleanEmail,
       otp: cleanOtp
@@ -199,7 +199,7 @@ export class App implements AfterViewInit, OnDestroy {
     const currentAmount = this.amount;
     this.resetSubscriptions();
 
-    this.http.post<any>('${environment.apiUrl}/payments', {
+    this.http.post<any>(`${environment.apiUrl}/payments`, {
       amount: currentAmount,
       userEmail: this.currentUser?.email
     })
